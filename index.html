@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Calma, Meu Amor 💖</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #e0f7fa, #ffffff);
+      color: #333;
+      text-align: center;
+      padding: 20px;
+      transition: background 0.5s, color 0.5s;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      color: #00796b;
+    }
+
+    .frase {
+      margin: 20px auto;
+      font-size: 1.4em;
+      font-style: italic;
+      color: #444;
+      max-width: 600px;
+    }
+
+    button {
+      padding: 12px 20px;
+      margin: 10px;
+      border: none;
+      border-radius: 10px;
+      background-color: #80cbc4;
+      color: white;
+      font-size: 1em;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #4db6ac;
+    }
+
+    .breathing-box {
+      margin: 30px auto;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background-color: #b2dfdb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2em;
+      animation: breathing 8s infinite;
+    }
+
+    @keyframes breathing {
+      0%, 100% {
+        transform: scale(1);
+        background-color: #b2dfdb;
+      }
+      50% {
+        transform: scale(1.2);
+        background-color: #a7ffeb;
+      }
+    }
+
+    .emergency {
+      background-color: #ffccbc;
+      border-radius: 10px;
+      padding: 20px;
+      margin-top: 30px;
+      display: none;
+    }
+
+    .night {
+      background: #263238;
+      color: #eee;
+    }
+    .night .frase {
+      color: #ccc;
+    }
+    .night .breathing-box {
+      background-color: #37474f;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Calma, meu amor 💖</h1>
+
+  <p class="frase" id="frase">Você é muito mais forte do que pensa.</p>
+
+  <div class="breathing-box" id="breathing">Inspire...</div>
+
+  <button onclick="playSound()">🎵 Tocar Som Relaxante</button>
+  <button onclick="startCrisisMode()">😥 Estou em crise</button>
+  <button onclick="contactMe()">📱 Falar comigo</button>
+
+  <div class="emergency" id="crisisHelp">
+    <h2>🌸 Respira... você vai ficar bem.</h2>
+    <ul style="text-align: left;">
+      <li>👉 Inspire por 4 segundos.</li>
+      <li>👉 Segure por 4 segundos.</li>
+      <li>👉 Expire por 6 segundos.</li>
+      <li>👉 Toque algo gelado. Concentre-se na sensação.</li>
+      <li>👉 Diga em voz alta: “Eu sou forte. Isso vai passar.”</li>
+      <li>👉 Lembre-se: você é amada, e eu estou aqui com você.</li>
+    </ul>
+  </div>
+
+  <audio id="relaxAudio" src="relaxar.mp3"></audio>
+
+  <script>
+    // Respiração guiada
+    const breathing = document.getElementById("breathing");
+    const frase = document.getElementById("frase");
+    let state = 0;
+    const passos = ["Inspire...", "Segure...", "Expire..."];
+    const frases = [
+      "Você é muito mais forte do que pensa.",
+      "Estou aqui com você, agora e sempre.",
+      "Respira. Está tudo bem. Vai passar.",
+      "Você não está sozinha. Eu te amo.",
+      "Feche os olhos e sinta minha mão na sua.",
+      "O mundo é mais leve quando você está nele.",
+      "Você é luz, mesmo nos dias nublados.",
+      "Não tenha pressa. Tudo vai se acalmar."
+    ];
+
+    setInterval(() => {
+      breathing.textContent = passos[state];
+      state = (state + 1) % passos.length;
+      frase.textContent = frases[Math.floor(Math.random() * frases.length)];
+    }, 4000);
+
+    function playSound() {
+      document.getElementById("relaxAudio").play();
+    }
+
+    function startCrisisMode() {
+      document.getElementById("crisisHelp").style.display = "block";
+    }
+
+    function contactMe() {
+      // Substitua o número abaixo pelo seu número com DDI (ex: +55)
+      window.open("https://wa.me/5591259789?text=Oi%2C+meu+amor...+preciso+de+você.", "_blank");
+    }
+
+    // Modo noturno automático à noite
+    const hour = new Date().getHours();
+    if (hour >= 20 || hour <= 6) {
+      document.body.classList.add("night");
+    }
+  </script>
+</body>
+</html>
